@@ -22,12 +22,42 @@ function generatePassword() {
   }
 
   var passwordLength=parseInt(window.prompt("Choose a password length from 8 to 128."));
-  while (passwordLength < 8 || passwordLength > 128 || typeof (passwordLength) != "number") {
+  while (passwordLength < 8 || passwordLength > 128 || passwordLength === NaN) {
     window.alert("Make sure that your selection is a number from 8 to 128.");
     passwordLength=parseInt(window.prompt("Choose a password length from 8 to 128. And try not to mess it up this time."));
   }
 
-  
+  if (useLowerCase==true) {
+    caseArray.push(lowerCase);
+  }
+
+  if (useUpperCase==true) {
+    caseArray.push(upperCase);
+  }
+
+  if (useNumber==true) {
+    caseArray.push(number);
+  }
+
+  if (useSpecial==true) {
+    caseArray.push(special);
+  }
+
+  for(let i=0; i<passwordLength; i++) {
+    var randomCharArrayNum;
+    var selectedCharArray;
+    var randomCharNum;
+    var randomChar;
+
+    randomCharArray= parseInt(Math.floor(Math.random()*caseArray.length));
+    selectedCharArray= caseArray[randomCharArrayNum];
+    randomCharNum= Math.floor(Math.random()*selectedCharArray.length);
+    randomChar=selectedCharArray[randomCharNum];
+    passwordString+=randomChar;
+
+  }
+
+
 
 }
 
