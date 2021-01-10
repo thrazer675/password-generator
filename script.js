@@ -8,6 +8,7 @@ var special=["!","@","#","$","%","^","&","*","(",")","_","+"];
 function generatePassword() {
 
   var passwordString="";
+  caseArray=[];
   var useLowerCase=confirm("Would you like lowercase letters?");
   var useUpperCase=confirm("What about uppercase letters?");
   var useNumber=confirm("Do you want some numbers?");
@@ -43,12 +44,13 @@ function generatePassword() {
     caseArray.push(special);
   }
 
-  for(let i=0; i<passwordLength; i++) {
+  for(var i=0;i<passwordLength;i++) {
     var randomCharArrayNum;
     var selectedCharArray;
     var randomCharNum;
     var randomChar;
 
+    randomCharArrayNum= parseInt(Math.floor(Math.random()*caseArray.length));
     randomCharArray= parseInt(Math.floor(Math.random()*caseArray.length));
     selectedCharArray= caseArray[randomCharArrayNum];
     randomCharNum= Math.floor(Math.random()*selectedCharArray.length);
@@ -57,7 +59,7 @@ function generatePassword() {
 
   }
 
-
+  return passwordString;
 
 }
 
